@@ -79,8 +79,8 @@
 
 ---
 
-<div align="center">
-**为 CherryStudio 用 ❤️ 制作**
+
+
 
 喜欢的话请 ⭐ 给个星！
 

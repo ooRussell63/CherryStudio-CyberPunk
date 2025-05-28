@@ -73,16 +73,10 @@ You can modify these color variables at the top of the CSS file:
 
 Found a bug or want to suggest improvements? Feel free to [open an issue](https://github.com/yourusername/cherrystudio-cyberpunk-theme/issues)!
 
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) for details.
-
 ---
 
 <div align="center">
-
-**Made with ❤️ for CherryStudio**
-
 ⭐ Star this repo if you like it!
 
 </div>
+
