@@ -53,11 +53,11 @@
 ## 🚀 安装
 
 1. **下载 CSS 文件或直接复制CSS 代码**: [cyberpunk-theme.css](cyberpunk-theme.css)
-
 2. **应用到 CherryStudio**:
    - 打开 CherryStudio
    - 进入 设置 → 外观 → 自定义 CSS
    - 复制粘贴 CSS 内容
+   - 切换主题为“黑暗”模式
    - 保存并重启
 
 ## 🎨 自定义

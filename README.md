@@ -54,6 +54,7 @@
    - Open CherryStudio
    - Go to Settings → Appearance → Custom CSS
    - Copy and paste the CSS content
+   - Thransfer theme to "Dark" mode
    - Save and restart
 
 ## 🎨 Customization
