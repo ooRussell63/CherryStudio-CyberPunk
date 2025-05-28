@@ -1,0 +1,342 @@
+/* CherryStudio Cyberpunk Theme */
+/* Dark cyberpunk aesthetic with cyan, neon pink, and hacker green accents */
+
+:root {
+  /* Base fill colors - cyan variants */
+  --fill-1: rgba(0 255 255 / 0.1);
+  --fill-2: rgba(0 255 255 / 0.15);
+  --fill-3: rgba(0 255 255 / 0.2);
+
+  --color-black: var(--fill-1);
+  --color-black-soft: var(--fill-2);
+  --color-black-mute: var(--fill-3);
+
+  /* Cyberpunk color palette */
+  --cyber-cyan: #00ffff;
+  --cyber-pink: #ff0080;
+  --cyber-purple: #8000ff;
+  --cyber-green: #00ff41;
+  --cyber-blue: #0080ff;
+  --cyber-gold: #ffd700;
+  --cyber-orange: #ff6b35;
+}
+
+/* Light theme color adjustments */
+body[theme-mode=light] {
+  --fill-1: rgba(0 255 255 / 0.08);
+  --fill-2: rgba(0 255 255 / 0.12);
+  --fill-3: rgba(0 255 255 / 0.16);
+  --color-white: var(--fill-1);
+  --color-white-soft: var(--fill-2);
+  --color-white-mute: var(--fill-3);
+}
+
+/* Windows transparency background fixes */
+body[theme-mode=light][os=windows] {
+  --color-background: hsla(240 100% 5% / 1);
+  --color-background-opacity: hsla(240 50% 10% / 0.8);
+}
+
+body[theme-mode=dark][os=windows] {
+  --color-background: hsla(240 100% 3% / 1);
+  --color-background-opacity: hsla(240 50% 5% / 0.8);
+}
+
+/* Adaptive background gradients */
+@media (prefers-color-scheme: dark) {
+  body[theme-mode=light] {
+    background: linear-gradient(135deg, 
+      rgba(0 255 255 / 0.1) 0%, 
+      rgba(255 0 128 / 0.12) 30%,
+      rgba(128 0 255 / 0.1) 70%, 
+      rgba(255 0 128 / 0.1) 100%);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body[theme-mode=dark] {
+    background: linear-gradient(135deg, 
+      rgba(0 255 255 / 0.15) 0%, 
+      rgba(255 0 128 / 0.18) 30%,
+      rgba(128 0 255 / 0.15) 70%, 
+      rgba(255 0 128 / 0.15) 100%);
+  }
+}
+
+/* Main content containers */
+#content-container,
+.minapp-drawer .ant-drawer-body {
+  background: linear-gradient(180deg, 
+    rgba(0 255 255 / 0.03) 0%, 
+    rgba(255 0 128 / 0.04) 50%,
+    rgba(0 255 65 / 0.02) 100%);
+  border: 1px solid rgba(0 255 255 / 0.1);
+}
+
+[theme-mode=dark] #content-container,
+[theme-mode=dark] .minapp-drawer .ant-drawer-body {
+  background: linear-gradient(180deg, 
+    rgba(0 255 255 / 0.05) 0%, 
+    rgba(255 0 128 / 0.06) 50%,
+    rgba(0 255 65 / 0.03) 100%);
+  border: 1px solid rgba(0 255 255 / 0.15);
+}
+
+/* Transparent background elements */
+.home-tabs,
+[class^=ProgramSection],
+[class^=IconSection],
+#messages, 
+[class^=SettingContainer],
+[class^=TopicListItem] .menu {
+  background-color: transparent !important;
+}
+
+/* Topic list items with neon pink highlights */
+[class^=TopicListItem]:hover,
+[class^=TopicListItem].active,
+[class^=TopicListItem][class*="selected"] {
+  background: linear-gradient(90deg, 
+    rgba(255 0 128 / 0.15) 0%, 
+    rgba(255 107 53 / 0.1) 50%,
+    rgba(255 215 0 / 0.08) 100%) !important;
+  border-left: 3px solid var(--cyber-pink) !important;
+  border-radius: 0 !important;
+  box-shadow: 
+    0 0 20px rgba(255 0 128 / 0.4),
+    inset 0 0 20px rgba(255 107 53 / 0.1) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Input bar with cyber cyan effects */
+#inputbar {
+  background: linear-gradient(90deg, 
+    rgba(0 255 255 / 0.1) 0%, 
+    rgba(0 128 255 / 0.08) 100%);
+  border: 2px solid transparent;
+  border-image: linear-gradient(90deg, var(--cyber-cyan), var(--cyber-blue)) 1;
+  backdrop-filter: blur(15px);
+  transition: all 0.3s ease;
+}
+
+#inputbar:focus-within {
+  border-image: linear-gradient(90deg, var(--cyber-cyan), var(--cyber-purple), var(--cyber-cyan)) 1;
+  box-shadow: 
+    0 0 30px rgba(0 255 255 / 0.5),
+    inset 0 0 20px rgba(0 255 255 / 0.1);
+  animation: cyber-pulse 2s infinite;
+}
+
+/* System component backgrounds */
+.system-prompt,
+[class^=CardContent],
+[class^=ServerCard] {
+  background-color: var(--fill-1);
+}
+
+/* Theme-specific background overrides */
+[theme-mode=light] #chat,
+[theme-mode=light] [class^=SettingGroup],
+[theme-mode=light] [class^=MainContainer],
+[theme-mode=light] [class^=MainContent],
+[theme-mode=light] [class^=ProviderListContainer] + [class^=SettingContainer] {
+  background-color: hsla(0 0% 100% / 0.4) !important;
+}
+
+[theme-mode=dark] #chat,
+[theme-mode=dark] [class^=SettingGroup],
+[theme-mode=dark] [class^=MainContainer],
+[theme-mode=dark] [class^=MainContent],
+[theme-mode=dark] [class^=ProviderListContainer] + [class^=SettingContainer] {
+  background-color: hsla(0 0% 0% / 0.2) !important;
+}
+
+/* Modal color resets */
+[theme-mode=light] [class^=ant-modal],
+[theme-mode=light] #root[style*="background: var(--color-white)"] {
+  --color-white: #ffffff;
+  --color-white-soft: #f2f2f2;
+  --color-white-mute: #eee;
+  --color-background: var(--color-white);
+  --color-background-soft: var(--color-white-soft);
+  --color-background-mute: var(--color-white-mute);
+}
+
+[theme-mode=dark] [class^=ant-modal] {
+  --color-black: #1b1b1f;
+  --color-black-soft: #2c2c34;
+  --color-black-mute: #3c3c44;
+  --color-background: var(--color-black);
+  --color-background-soft: var(--color-black-soft);
+  --color-background-mute: var(--color-black-mute);
+}
+
+/* Code block containers */
+[class*="code-block"], 
+.code-container,
+[class*="highlight"] {
+  border: 2px solid var(--cyber-green) !important;
+  border-radius: 8px !important;
+  box-shadow: 
+    0 0 20px rgba(0 255 65 / 0.3),
+    inset 0 0 20px rgba(0 255 65 / 0.05) !important;
+  backdrop-filter: blur(10px) !important;
+  position: relative !important;
+  padding: 0 !important;
+  margin: 16px 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+}
+
+/* Code block inner content */
+[class*="code-block"] pre,
+[class*="code-block"] code,
+.code-container pre,
+.code-container code,
+[class*="highlight"] pre,
+[class*="highlight"] code,
+[class*="code-block"] [class*="language-"],
+[class*="code-block"] [class*="hljs"],
+.code-container [class*="language-"],
+.code-container [class*="hljs"],
+[class*="highlight"] [class*="language-"],
+[class*="highlight"] [class*="hljs"] {
+  background: linear-gradient(135deg, 
+    rgba(10 10 15 / 0.95) 0%, 
+    rgba(5 5 8 / 0.98) 100%) !important;
+  border: none !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 16px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Code block action buttons (copy, download, etc.) */
+[class*="code-block"] [class*="copy"],
+[class*="code-block"] [class*="download"],
+[class*="code-block"] [class*="action"],
+[class*="code-block"] button,
+.code-container [class*="copy"],
+.code-container [class*="download"],
+.code-container [class*="action"],
+.code-container button,
+[class*="highlight"] [class*="copy"],
+[class*="highlight"] [class*="download"],
+[class*="highlight"] [class*="action"],
+[class*="highlight"] button {
+  position: relative !important;
+  z-index: 10 !important;
+  background: rgba(0 255 255 / 0.1) !important;
+  border: 1px solid var(--cyber-cyan) !important;
+  color: var(--cyber-cyan) !important;
+  border-radius: 4px !important;
+  transition: all 0.3s ease !important;
+}
+
+[class*="code-block"] [class*="copy"]:hover,
+[class*="code-block"] [class*="download"]:hover,
+[class*="code-block"] [class*="action"]:hover,
+[class*="code-block"] button:hover,
+.code-container [class*="copy"]:hover,
+.code-container [class*="download"]:hover,
+.code-container [class*="action"]:hover,
+.code-container button:hover,
+[class*="highlight"] [class*="copy"]:hover,
+[class*="highlight"] [class*="download"]:hover,
+[class*="highlight"] [class*="action"]:hover,
+[class*="highlight"] button:hover {
+  background: rgba(0 255 255 / 0.2) !important;
+  box-shadow: 0 0 10px rgba(0 255 255 / 0.5) !important;
+}
+
+/* Code comments with green glow */
+.token.comment,
+[class*="hljs-comment"] {
+  color: rgba(180 255 180 / 0.9) !important;
+  font-style: italic !important;
+  text-shadow: 0 0 3px rgba(180 255 180 / 0.4) !important;
+  font-weight: 500 !important;
+}
+
+/* Tab styling */
+.home-tabs .ant-tabs-tab {
+  background: linear-gradient(135deg, 
+    rgba(75 0 130 / 0.3) 0%, 
+    rgba(138 43 226 / 0.25) 100%) !important;
+}
+
+/* Inline code and syntax highlighting */
+code:not([class*="code-block"] code):not(.code-container code):not([class*="highlight"] code), 
+.token.keyword,
+.token.function,
+.hljs-keyword,
+.hljs-function {
+  background: rgba(30 40 60 / 0.6) !important;
+  color: rgba(100 200 255 / 0.95) !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  border: 1px solid rgba(100 200 255 / 0.2) !important;
+}
+
+/* Code block glow effect */
+[class*="code-block"]::before,
+.code-container::before,
+[class*="highlight"]::before {
+  content: "";
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  background: linear-gradient(45deg, var(--cyber-green), transparent, var(--cyber-green));
+  border-radius: 8px;
+  z-index: -1;
+  animation: code-glow 3s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+/* Button hover effects */
+button:hover, 
+[class*="Button"]:hover,
+.ant-btn:hover {
+  box-shadow: 0 0 15px rgba(255 0 128 / 0.6) !important;
+  border-color: var(--cyber-pink) !important;
+  animation: neon-flicker 1.5s infinite !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  background: rgba(0 0 0 / 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--cyber-cyan), var(--cyber-pink));
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0 255 255 / 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  box-shadow: 0 0 15px rgba(255 0 128 / 0.7);
+}
+
+/* Animations */
+@keyframes cyber-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 30px rgba(0 255 255 / 0.5), inset 0 0 20px rgba(0 255 255 / 0.1);
+  }
+  50% { 
+    box-shadow: 0 0 50px rgba(0 255 255 / 0.8), inset 0 0 30px rgba(0 255 255 / 0.2);
+  }
+}
+
+@keyframes code-glow {
+  0% { opacity: 0.5; }
+  100% { opacity: 0.8; }
+}
+
+@keyframes neon-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
