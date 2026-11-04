@@ -70,6 +70,12 @@ You can modify these color variables at the top of the CSS file:
 }
 ```
 
+## 🙏 Credits
+
+This theme is based in large part on [CherryStudio-Aero](https://github.com/hakadao/CherryStudio-Aero) by [hakadao](https://github.com/hakadao), especially its [original style.css](https://github.com/hakadao/CherryStudio-Aero/blob/main/style.css). The base color variables, transparency handling, and component background rules were adapted from that project. Thank you for the original work!
+
+This project adds the cyberpunk palette, neon effects, animations, and code-block styling. See the [upstream license](https://github.com/hakadao/CherryStudio-Aero/blob/main/LICENSE) for CherryStudio-Aero's licensing terms.
+
 ## 🤝 Contributing
 
 Found a bug or want to suggest improvements? Feel free to [open an issue](https://github.com/yourusername/cherrystudio-cyberpunk-theme/issues)!

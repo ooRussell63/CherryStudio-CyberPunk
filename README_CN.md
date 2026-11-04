@@ -73,6 +73,12 @@
 }
 ```
 
+## 🙏 致谢与来源
+
+本主题的基础样式大量改编自 [hakadao](https://github.com/hakadao) 的 [CherryStudio-Aero](https://github.com/hakadao/CherryStudio-Aero)，尤其是其 [原始 style.css](https://github.com/hakadao/CherryStudio-Aero/blob/main/style.css)。基础颜色变量、透明背景处理和组件背景规则沿用了该项目的设计并进行了调整，感谢原作者的工作！
+
+本项目在此基础上添加了赛博朋克配色、霓虹效果、动画和代码块样式。CherryStudio-Aero 的许可条款见 [上游许可证](https://github.com/hakadao/CherryStudio-Aero/blob/main/LICENSE)。
+
 ## 🤝 贡献
 
 发现问题或想提建议？欢迎 [提交 issue](https://github.com/yourusername/cherrystudio-cyberpunk-theme/issues)！

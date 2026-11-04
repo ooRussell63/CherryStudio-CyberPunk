@@ -1,5 +1,10 @@
 /* CherryStudio Cyberpunk Theme */
 /* Dark cyberpunk aesthetic with cyan, neon pink, and hacker green accents */
+/* Based in large part on CherryStudio-Aero by hakadao:
+ * https://github.com/hakadao/CherryStudio-Aero
+ * Original styles: https://github.com/hakadao/CherryStudio-Aero/blob/main/style.css
+ * Cyberpunk palette, neon effects, and code-block styling adapted for this theme.
+ */
 
 :root {
   /* Base fill colors - cyan variants */
@@ -80,6 +85,23 @@ body[theme-mode=dark][os=windows] {
     rgba(255 0 128 / 0.06) 50%,
     rgba(0 255 65 / 0.03) 100%);
   border: 1px solid rgba(0 255 255 / 0.15);
+}
+
+/* Mini apps overlay the chat without a mask. Keep an opaque surface beneath
+ * the title bar, loading view, and translucent body gradient (issue #1).
+ */
+.minapp-drawer {
+  --cyber-miniapp-background: #1b1b1f;
+}
+
+[theme-mode=light] .minapp-drawer {
+  --cyber-miniapp-background: #ffffff;
+}
+
+.minapp-drawer .ant-drawer-content,
+.minapp-drawer .ant-drawer-body {
+  /* Override the drawer's inline background color and the gradients above. */
+  background-color: var(--cyber-miniapp-background) !important;
 }
 
 /* Transparent background elements */
