@@ -20,9 +20,7 @@
   --cyber-cyan: #00ffff;
   --cyber-pink: #ff0080;
   --cyber-purple: #8000ff;
-  --cyber-green: #56f39a;
-  --terminal-surface: #080e10;
-  --terminal-radius: 12px;
+  --cyber-green: #00ff41;
   --cyber-blue: #0080ff;
   --cyber-gold: #ffd700;
   --cyber-orange: #ff6b35;
@@ -115,19 +113,23 @@ body[theme-mode=dark][os=windows] {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-/* Quiet command input: cyan is reserved for interaction. */
+/* Input bar with cyber cyan effects */
 #inputbar {
-  background: linear-gradient(135deg, #0c161b, #0b1116) !important;
-  border: 1px solid rgba(91 190 205 / 0.28) !important;
-  border-image: none !important;
-  border-radius: var(--terminal-radius) !important;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background: linear-gradient(90deg, 
+    rgba(0 255 255 / 0.1) 0%, 
+    rgba(0 128 255 / 0.08) 100%);
+  border: 2px solid transparent;
+  border-image: linear-gradient(90deg, var(--cyber-cyan), var(--cyber-blue)) 1;
+  backdrop-filter: blur(15px);
+  transition: all 0.3s ease;
 }
 
 #inputbar:focus-within {
-  border-color: rgba(94 224 236 / 0.65) !important;
-  box-shadow: 0 0 14px rgba(0 220 235 / 0.12), inset 0 1px rgba(150 240 250 / 0.06);
-  animation: cyber-pulse 6s ease-in-out infinite;
+  border-image: linear-gradient(90deg, var(--cyber-cyan), var(--cyber-purple), var(--cyber-cyan)) 1;
+  box-shadow: 
+    0 0 30px rgba(0 255 255 / 0.5),
+    inset 0 0 20px rgba(0 255 255 / 0.1);
+  animation: cyber-pulse 2s infinite;
 }
 
 /* System component backgrounds */
@@ -174,61 +176,33 @@ body[theme-mode=dark][os=windows] {
   --color-background-mute: var(--color-black-mute);
 }
 
-/* Flight-console frame. Exact classes avoid styling nested headers/viewers. */
+/* Match complete class names: 2.1.10 also has code-block-header and highlights. */
 .code-block,
 .code-container,
 .highlight {
-  border: 1px solid rgba(86 243 154 / 0.6) !important;
-  border-radius: var(--terminal-radius) !important;
-  background: var(--terminal-surface) !important;
-  box-shadow: 0 0 18px rgba(35 235 126 / 0.12);
-  animation: code-glow 6s ease-in-out infinite alternate;
+  border: 2px solid var(--cyber-green) !important;
+  border-radius: 8px !important;
+  background: #080a0d !important;
+  box-shadow: 0 0 20px rgba(0 255 65 / 0.3);
+  animation: code-glow 3s ease-in-out infinite alternate;
 }
 
-/* Corner registration marks sit on the frame, never across code or controls. */
-.code-block::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  z-index: 2;
-  background:
-    linear-gradient(var(--cyber-green), var(--cyber-green)) left 8px top / 24px 2px no-repeat,
-    linear-gradient(var(--cyber-green), var(--cyber-green)) left top 8px / 2px 24px no-repeat,
-    linear-gradient(var(--cyber-green), var(--cyber-green)) right 8px bottom / 24px 2px no-repeat,
-    linear-gradient(var(--cyber-green), var(--cyber-green)) right bottom 8px / 2px 24px no-repeat;
-}
-
-/* Preserve the virtualized viewer's dimensions and scrolling. */
-.code-block .code-viewer {
-  background: radial-gradient(ellipse at top left, rgba(45 110 80 / 0.07), transparent 70%), var(--terminal-surface) !important;
+/* New code viewer uses virtualized divs; preserve its sizing and scrolling. */
+.code-block .code-viewer,
+.code-block .code-block-header {
+  background: #080a0d !important;
 }
 
 .code-block .code-block-header {
-  background: linear-gradient(90deg, #12241d, #0d1818 65%, #0b1317) !important;
-  color: #93d8ac !important;
-  border-bottom: 1px solid rgba(86 243 154 / 0.18) !important;
-  font-family: var(--code-font-family), monospace;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-}
-
-/* Decorative instrument ticks; no invented connection or execution status. */
-.code-block .code-block-header:not(:empty)::after {
-  content: "";
-  width: 42px;
-  height: 5px;
-  margin-left: 14px;
-  opacity: 0.45;
-  background: repeating-linear-gradient(90deg, #56f39a 0 2px, transparent 2px 7px);
+  color: var(--cyber-green) !important;
+  border-bottom: 1px solid rgba(0 255 65 / 0.25) !important;
 }
 
 /* Traditional pre/code renderers: style the surface, not every syntax token. */
 .code-block pre,
 .code-container pre,
 .highlight pre {
-  background: var(--terminal-surface) !important;
+  background: #080a0d !important;
   border: none !important;
   box-shadow: none !important;
 }
@@ -241,32 +215,52 @@ body[theme-mode=dark][os=windows] {
   padding: 0 !important;
 }
 
-/* Console tools stay readable without oversized neon button outlines. */
+/* Code block action buttons (copy, download, etc.) */
+.code-block [class*="copy"],
+.code-block [class*="download"],
+.code-block [class*="action"],
 .code-block button,
+.code-container [class*="copy"],
+.code-container [class*="download"],
+.code-container [class*="action"],
 .code-container button,
+.highlight [class*="copy"],
+.highlight [class*="download"],
+.highlight [class*="action"],
 .highlight button {
-  background: rgba(86 243 154 / 0.04) !important;
-  border: 1px solid rgba(86 243 154 / 0.18) !important;
-  color: #a5d8c0 !important;
-  border-radius: 5px !important;
-  transition: background 0.2s ease, border-color 0.2s ease !important;
+  position: relative !important;
+  z-index: 10 !important;
+  background: rgba(0 255 255 / 0.1) !important;
+  border: 1px solid var(--cyber-cyan) !important;
+  color: var(--cyber-cyan) !important;
+  border-radius: 4px !important;
+  transition: all 0.3s ease !important;
 }
 
+.code-block [class*="copy"]:hover,
+.code-block [class*="download"]:hover,
+.code-block [class*="action"]:hover,
 .code-block button:hover,
-.code-block button:focus-visible {
-  background: rgba(86 243 154 / 0.12) !important;
-  border-color: var(--cyber-green) !important;
-  color: #dcffe9 !important;
+.code-container [class*="copy"]:hover,
+.code-container [class*="download"]:hover,
+.code-container [class*="action"]:hover,
+.code-container button:hover,
+.highlight [class*="copy"]:hover,
+.highlight [class*="download"]:hover,
+.highlight [class*="action"]:hover,
+.highlight button:hover {
+  background: rgba(0 255 255 / 0.2) !important;
+  box-shadow: 0 0 10px rgba(0 255 255 / 0.5) !important;
 }
 
-/* Readable phosphor-green comments, including Chinese text. */
+/* Code comments with green glow */
 .token.comment,
 .hljs-comment,
 .code-block .code-syntax-comment {
-  color: #8bb89d !important;
-  font-style: normal !important;
-  text-shadow: none !important;
-  font-weight: 400 !important;
+  color: rgba(180 255 180 / 0.9) !important;
+  font-style: italic !important;
+  text-shadow: 0 0 3px rgba(180 255 180 / 0.4) !important;
+  font-weight: 500 !important;
 }
 
 /* Tab styling */
@@ -292,42 +286,47 @@ code:not(pre code):not(.code-block code):not(.code-container code):not(.highligh
   color: rgba(100 200 255 / 0.95) !important;
 }
 
-/* Interaction feedback is steady; avoid flashing every control. */
-button:focus-visible {
-  outline: 2px solid rgba(112 224 232 / 0.75);
-  outline-offset: 2px;
+/* Button hover effects */
+button:hover, 
+[class*="Button"]:hover,
+.ant-btn:hover {
+  box-shadow: 0 0 15px rgba(255 0 128 / 0.6) !important;
+  border-color: var(--cyber-pink) !important;
+  animation: neon-flicker 1.5s infinite !important;
 }
 
-/* Low-contrast instrument rails. */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
-  height: 8px;
-  background: rgba(0 0 0 / 0.2);
+  background: rgba(0 0 0 / 0.3);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(104 161 151 / 0.4);
-  border: 2px solid transparent;
-  background-clip: padding-box;
-  border-radius: 6px;
+  background: linear-gradient(180deg, var(--cyber-cyan), var(--cyber-pink));
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0 255 255 / 0.5);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(112 210 184 / 0.65);
+  box-shadow: 0 0 15px rgba(255 0 128 / 0.7);
 }
 
+/* Animations */
 @keyframes cyber-pulse {
-  0%, 100% { box-shadow: 0 0 10px rgba(0 220 235 / 0.08); }
-  50% { box-shadow: 0 0 18px rgba(0 220 235 / 0.16); }
+  0%, 100% { 
+    box-shadow: 0 0 30px rgba(0 255 255 / 0.5), inset 0 0 20px rgba(0 255 255 / 0.1);
+  }
+  50% { 
+    box-shadow: 0 0 50px rgba(0 255 255 / 0.8), inset 0 0 30px rgba(0 255 255 / 0.2);
+  }
 }
 
 @keyframes code-glow {
-  0% { box-shadow: 0 0 12px rgba(35 235 126 / 0.10); }
-  100% { box-shadow: 0 0 22px rgba(35 235 126 / 0.20); }
+  0% { box-shadow: 0 0 12px rgba(0 255 65 / 0.25); }
+  100% { box-shadow: 0 0 26px rgba(0 255 65 / 0.5); }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .code-block, .code-container, .highlight, #inputbar:focus-within {
-    animation: none !important;
-  }
+@keyframes neon-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
 }

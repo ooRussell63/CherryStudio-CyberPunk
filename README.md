@@ -12,7 +12,7 @@
 
 - 🎨 **Cyberpunk Aesthetic**: Dark theme with cyan, neon pink, and hacker green
 - 🌈 **Neon Effects**: Glowing borders and animated effects
-- 💻 **Enhanced Code Blocks**: Spacecraft terminal styling: dark panels, green corner marks, an instrument-style header, and slow breathing light
+- 💻 **Enhanced Code Blocks**: Special styling with hacker-green borders
 - ⚡ **Smooth Animations**: Fluid transitions and hover effects
 
 ## ✅ Compatibility
@@ -27,7 +27,7 @@ Legacy compatibility is outside the current maintenance scope. The historical mi
 
 Recorded in **Cherry Studio 2.1.10 on macOS**, using this repository's CSS.
 
-**Spacecraft terminal code block and input focus animation** (a real model response)
+**Green terminal code block and neon input animation** (a real model response)
 
 ![Cherry Studio 2.1.10 green terminal and neon input animation](screenshots/v2.1.10-neon.gif)
 
@@ -36,8 +36,6 @@ Recorded in **Cherry Studio 2.1.10 on macOS**, using this repository's CSS.
 ![Cherry Studio 2.1.10 mini-app and split-view demo](screenshots/v2.1.10-miniapps.gif)
 
 Embedded websites keep their own appearance; this theme styles the Cherry Studio interface.
-
-The theme respects the system reduced-motion preference, disabling the code-frame and input breathing animations.
 
 ## 🚀 Installation
 
