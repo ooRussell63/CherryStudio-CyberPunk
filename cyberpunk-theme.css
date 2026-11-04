@@ -188,14 +188,15 @@ body[theme-mode=dark][os=windows] {
 }
 
 /* New code viewer uses virtualized divs; preserve its sizing and scrolling. */
-.code-block .code-viewer,
-.code-block .code-block-header {
+.code-block .code-viewer {
   background: #080a0d !important;
 }
 
 .code-block .code-block-header {
-  color: var(--cyber-green) !important;
-  border-bottom: 1px solid rgba(0 255 65 / 0.25) !important;
+  /* Restore the original green title strip without tinting the code surface. */
+  background: linear-gradient(105deg, #137b60 0%, #125858 38%, #00c83b 100%) !important;
+  color: #e7fff0 !important;
+  border-bottom: 1px solid rgba(0 255 65 / 0.35) !important;
 }
 
 /* Traditional pre/code renderers: style the surface, not every syntax token. */
