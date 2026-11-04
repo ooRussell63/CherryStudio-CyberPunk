@@ -1,15 +1,12 @@
 # CherryStudio 赛博朋克主题 🌈⚡
 
 <div align="center">
-<div align="center">
-  <img src="screenshots/preview.png" alt="Theme Preview" width="800">
+  <img src="screenshots/v2.1.10-preview.png" alt="Theme Preview" width="800">
 </div>
 
 **为 CherryStudio 打造的炫酷赛博朋克主题**
 
 [English](README.md) | [简体中文](README_CN.md)
-
-
 
 ## ✨ 特性
 
@@ -18,37 +15,27 @@
 - 💻 **代码块增强**: 特殊样式配黑客绿色边框
 - ⚡ **流畅动画**: 平滑过渡和悬停效果
 
-## 🖼️ 预览
+## ✅ 支持范围
 
+当前验证版本：**Cherry Studio 2.1.10 · macOS · 深色模式**。
 
+已在实际客户端检查主界面、输入框霓虹动画、小程序标签页及双小程序分屏。Windows、Linux 和其他版本尚未完成实机验证；部分组件样式可能随 Cherry Studio 更新而变化。
 
-<div align="center">
-  <img src="screenshots/live-1.gif" alt="Theme Preview" width="800">
-</div>
+旧版兼容性不在当前维护范围。历史版本的小程序透明重叠问题（[issue #1](https://github.com/ooRussell63/CherryStudio-CyberPunk/issues/1)）本次不做回补，也不标记为已修复。
 
+## 🖼️ 新版预览
 
+以下素材均录制自 **macOS 上的 Cherry Studio 2.1.10**，使用本仓库 CSS。
 
+**输入框聚焦与霓虹动画**（演示文字未发送）
 
+![Cherry Studio 2.1.10 输入框霓虹动画](screenshots/v2.1.10-neon.gif)
 
-<div align="center">
-  <img src="screenshots/live-2.gif" alt="Theme Preview" width="800">
-</div>
+**小程序标签页与分屏**
 
+![Cherry Studio 2.1.10 小程序与分屏演示](screenshots/v2.1.10-miniapps.gif)
 
-<div align="center">
-  <img src="screenshots/preview-3.png" alt="Theme Preview" width="800">
-</div>
-
-
-
-
-
-<div align="center">
-  <img src="screenshots/preview-4.png" alt="Theme Preview" width="800">
-</div>
-
-
-
+小程序网页使用各自网站的外观；主题作用于 Cherry Studio 界面。
 
 ## 🚀 安装
 
@@ -58,7 +45,7 @@
    - 进入 设置 → 外观 → 自定义 CSS
    - 复制粘贴 CSS 内容
    - 切换主题为“黑暗”模式
-   - 保存并重启
+   - 自定义 CSS 会自动生效
 
 ## 🎨 自定义
 
@@ -81,13 +68,8 @@
 
 ## 🤝 贡献
 
-发现问题或想提建议？欢迎 [提交 issue](https://github.com/yourusername/cherrystudio-cyberpunk-theme/issues)！
+发现问题或想提建议？欢迎 [提交 issue](https://github.com/ooRussell63/CherryStudio-CyberPunk/issues)！
 
 ---
 
-
-
-
 喜欢的话请 ⭐ 给个星！
-
-</div>

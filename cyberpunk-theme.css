@@ -87,23 +87,6 @@ body[theme-mode=dark][os=windows] {
   border: 1px solid rgba(0 255 255 / 0.15);
 }
 
-/* Mini apps overlay the chat without a mask. Keep an opaque surface beneath
- * the title bar, loading view, and translucent body gradient (issue #1).
- */
-.minapp-drawer {
-  --cyber-miniapp-background: #1b1b1f;
-}
-
-[theme-mode=light] .minapp-drawer {
-  --cyber-miniapp-background: #ffffff;
-}
-
-.minapp-drawer .ant-drawer-content,
-.minapp-drawer .ant-drawer-body {
-  /* Override the drawer's inline background color and the gradients above. */
-  background-color: var(--cyber-miniapp-background) !important;
-}
-
 /* Transparent background elements */
 .home-tabs,
 [class^=ProgramSection],
