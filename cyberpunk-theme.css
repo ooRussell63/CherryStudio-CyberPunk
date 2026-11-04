@@ -1,5 +1,10 @@
 /* CherryStudio Cyberpunk Theme */
 /* Dark cyberpunk aesthetic with cyan, neon pink, and hacker green accents */
+/* Based in large part on CherryStudio-Aero by hakadao:
+ * https://github.com/hakadao/CherryStudio-Aero
+ * Original styles: https://github.com/hakadao/CherryStudio-Aero/blob/main/style.css
+ * Cyberpunk palette, neon effects, and code-block styling adapted for this theme.
+ */
 
 :root {
   /* Base fill colors - cyan variants */
@@ -171,63 +176,59 @@ body[theme-mode=dark][os=windows] {
   --color-background-mute: var(--color-black-mute);
 }
 
-/* Code block containers */
-[class*="code-block"], 
+/* Match complete class names: 2.1.10 also has code-block-header and highlights. */
+.code-block,
 .code-container,
-[class*="highlight"] {
+.highlight {
   border: 2px solid var(--cyber-green) !important;
   border-radius: 8px !important;
-  box-shadow: 
-    0 0 20px rgba(0 255 65 / 0.3),
-    inset 0 0 20px rgba(0 255 65 / 0.05) !important;
-  backdrop-filter: blur(10px) !important;
-  position: relative !important;
-  padding: 0 !important;
-  margin: 16px 0 !important;
-  overflow: visible !important;
-  background: transparent !important;
+  background: #080a0d !important;
+  box-shadow: 0 0 20px rgba(0 255 65 / 0.3);
+  animation: code-glow 3s ease-in-out infinite alternate;
 }
 
-/* Code block inner content */
-[class*="code-block"] pre,
-[class*="code-block"] code,
+/* New code viewer uses virtualized divs; preserve its sizing and scrolling. */
+.code-block .code-viewer {
+  background: #080a0d !important;
+}
+
+.code-block .code-block-header {
+  /* Restore the original green title strip without tinting the code surface. */
+  background: linear-gradient(105deg, #137b60 0%, #125858 38%, #00c83b 100%) !important;
+  color: #e7fff0 !important;
+  border-bottom: 1px solid rgba(0 255 65 / 0.35) !important;
+}
+
+/* Traditional pre/code renderers: style the surface, not every syntax token. */
+.code-block pre,
 .code-container pre,
-.code-container code,
-[class*="highlight"] pre,
-[class*="highlight"] code,
-[class*="code-block"] [class*="language-"],
-[class*="code-block"] [class*="hljs"],
-.code-container [class*="language-"],
-.code-container [class*="hljs"],
-[class*="highlight"] [class*="language-"],
-[class*="highlight"] [class*="hljs"] {
-  background: linear-gradient(135deg, 
-    rgba(10 10 15 / 0.95) 0%, 
-    rgba(5 5 8 / 0.98) 100%) !important;
+.highlight pre {
+  background: #080a0d !important;
   border: none !important;
-  border-radius: 6px !important;
   box-shadow: none !important;
-  margin: 0 !important;
-  padding: 16px !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  position: relative !important;
-  z-index: 1 !important;
+}
+
+.code-block code,
+.code-container code,
+.highlight code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
 }
 
 /* Code block action buttons (copy, download, etc.) */
-[class*="code-block"] [class*="copy"],
-[class*="code-block"] [class*="download"],
-[class*="code-block"] [class*="action"],
-[class*="code-block"] button,
+.code-block [class*="copy"],
+.code-block [class*="download"],
+.code-block [class*="action"],
+.code-block button,
 .code-container [class*="copy"],
 .code-container [class*="download"],
 .code-container [class*="action"],
 .code-container button,
-[class*="highlight"] [class*="copy"],
-[class*="highlight"] [class*="download"],
-[class*="highlight"] [class*="action"],
-[class*="highlight"] button {
+.highlight [class*="copy"],
+.highlight [class*="download"],
+.highlight [class*="action"],
+.highlight button {
   position: relative !important;
   z-index: 10 !important;
   background: rgba(0 255 255 / 0.1) !important;
@@ -237,25 +238,26 @@ body[theme-mode=dark][os=windows] {
   transition: all 0.3s ease !important;
 }
 
-[class*="code-block"] [class*="copy"]:hover,
-[class*="code-block"] [class*="download"]:hover,
-[class*="code-block"] [class*="action"]:hover,
-[class*="code-block"] button:hover,
+.code-block [class*="copy"]:hover,
+.code-block [class*="download"]:hover,
+.code-block [class*="action"]:hover,
+.code-block button:hover,
 .code-container [class*="copy"]:hover,
 .code-container [class*="download"]:hover,
 .code-container [class*="action"]:hover,
 .code-container button:hover,
-[class*="highlight"] [class*="copy"]:hover,
-[class*="highlight"] [class*="download"]:hover,
-[class*="highlight"] [class*="action"]:hover,
-[class*="highlight"] button:hover {
+.highlight [class*="copy"]:hover,
+.highlight [class*="download"]:hover,
+.highlight [class*="action"]:hover,
+.highlight button:hover {
   background: rgba(0 255 255 / 0.2) !important;
   box-shadow: 0 0 10px rgba(0 255 255 / 0.5) !important;
 }
 
 /* Code comments with green glow */
 .token.comment,
-[class*="hljs-comment"] {
+.hljs-comment,
+.code-block .code-syntax-comment {
   color: rgba(180 255 180 / 0.9) !important;
   font-style: italic !important;
   text-shadow: 0 0 3px rgba(180 255 180 / 0.4) !important;
@@ -269,12 +271,8 @@ body[theme-mode=dark][os=windows] {
     rgba(138 43 226 / 0.25) 100%) !important;
 }
 
-/* Inline code and syntax highlighting */
-code:not([class*="code-block"] code):not(.code-container code):not([class*="highlight"] code), 
-.token.keyword,
-.token.function,
-.hljs-keyword,
-.hljs-function {
+/* Inline code keeps its badge styling without changing syntax-token spacing. */
+code:not(pre code):not(.code-block code):not(.code-container code):not(.highlight code) {
   background: rgba(30 40 60 / 0.6) !important;
   color: rgba(100 200 255 / 0.95) !important;
   padding: 2px 6px !important;
@@ -282,18 +280,11 @@ code:not([class*="code-block"] code):not(.code-container code):not([class*="high
   border: 1px solid rgba(100 200 255 / 0.2) !important;
 }
 
-/* Code block glow effect */
-[class*="code-block"]::before,
-.code-container::before,
-[class*="highlight"]::before {
-  content: "";
-  position: absolute;
-  top: -2px; left: -2px; right: -2px; bottom: -2px;
-  background: linear-gradient(45deg, var(--cyber-green), transparent, var(--cyber-green));
-  border-radius: 8px;
-  z-index: -1;
-  animation: code-glow 3s ease-in-out infinite alternate;
-  pointer-events: none;
+.token.keyword,
+.token.function,
+.hljs-keyword,
+.hljs-function {
+  color: rgba(100 200 255 / 0.95) !important;
 }
 
 /* Button hover effects */
@@ -332,8 +323,8 @@ button:hover,
 }
 
 @keyframes code-glow {
-  0% { opacity: 0.5; }
-  100% { opacity: 0.8; }
+  0% { box-shadow: 0 0 12px rgba(0 255 65 / 0.25); }
+  100% { box-shadow: 0 0 26px rgba(0 255 65 / 0.5); }
 }
 
 @keyframes neon-flicker {
