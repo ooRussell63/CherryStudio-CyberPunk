@@ -19,7 +19,7 @@
 
 当前验证版本：**Cherry Studio 2.1.10 · macOS · 深色模式**。
 
-已在实际客户端检查主界面、输入框霓虹动画、小程序标签页及双小程序分屏。Windows、Linux 和其他版本尚未完成实机验证；部分组件样式可能随 Cherry Studio 更新而变化。
+已在实际客户端检查主界面、输入框霓虹动画、模型实际返回的 Python 代码块（含语法高亮与复制）、小程序标签页及双小程序分屏。Windows、Linux 和其他版本尚未完成实机验证；部分组件样式可能随 Cherry Studio 更新而变化。
 
 旧版兼容性不在当前维护范围。历史版本的小程序透明重叠问题（[issue #1](https://github.com/ooRussell63/CherryStudio-CyberPunk/issues/1)）本次不做回补，也不标记为已修复。
 
@@ -27,9 +27,9 @@
 
 以下素材均录制自 **macOS 上的 Cherry Studio 2.1.10**，使用本仓库 CSS。
 
-**输入框聚焦与霓虹动画**（演示文字未发送）
+**绿色终端代码块与输入框霓虹动画**（真实模型回复）
 
-![Cherry Studio 2.1.10 输入框霓虹动画](screenshots/v2.1.10-neon.gif)
+![Cherry Studio 2.1.10 绿色终端与输入框霓虹动画](screenshots/v2.1.10-neon.gif)
 
 **小程序标签页与分屏**
 

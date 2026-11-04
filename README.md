@@ -19,7 +19,7 @@
 
 Currently verified: **Cherry Studio 2.1.10 · macOS · dark mode**.
 
-Checked in the installed app: the main view, neon input focus animation, mini-app tabs, and two-app split view. Windows, Linux, and other versions have not been tested on-device. Component styling may change with Cherry Studio updates.
+Checked in the installed app: the main view, neon input focus animation, a Python code block returned by a live model (including syntax highlighting and copy), mini-app tabs, and two-app split view. Windows, Linux, and other versions have not been tested on-device. Component styling may change with Cherry Studio updates.
 
 Legacy compatibility is outside the current maintenance scope. The historical mini-app transparency report ([issue #1](https://github.com/ooRussell63/CherryStudio-CyberPunk/issues/1)) is not backported or marked as fixed by this update.
 
@@ -27,9 +27,9 @@ Legacy compatibility is outside the current maintenance scope. The historical mi
 
 Recorded in **Cherry Studio 2.1.10 on macOS**, using this repository's CSS.
 
-**Input focus and neon animation** (the demo text was not sent)
+**Green terminal code block and neon input animation** (a real model response)
 
-![Cherry Studio 2.1.10 neon input animation](screenshots/v2.1.10-neon.gif)
+![Cherry Studio 2.1.10 green terminal and neon input animation](screenshots/v2.1.10-neon.gif)
 
 **Mini-app tabs and split view**
 
